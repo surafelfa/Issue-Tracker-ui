@@ -16,7 +16,7 @@
     "compile": "webpack --mode production",
     "#watch": "Compile, and recompile on any changes.",
     "watch": "webpack --watch",
-    "heroku-postbuild": "npm run compile && mklink /J public\\bootstrap node_modules\\bootstrap\\dist"
+    "heroku-postbuild": "npm run compile && ln -fs ../node_modules/bootstrap/dist public/bootstrap"
   },
   "keywords": [
     "mern"
