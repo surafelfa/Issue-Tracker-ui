@@ -36,8 +36,8 @@ const apiProxyTarget = process.env.API_PROXY_TARGET || 'http://localhost:3000';
 
 // any request to /graphql is routed to the API server.
 if (apiProxyTarget) {
-  app.use('/graphql', proxy({ target: apiProxyTarget }));
-  app.use('/auth', proxy({ target: apiProxyTarget }));
+  app.use('/graphql', proxy({ target: apiProxyTarget, changeOrigin: true }));
+  app.use('/auth', proxy({ target: apiProxyTarget, changeOrigin: true }));
 }
 
 if (!process.env.UI_AUTH_ENDPOINT) {
