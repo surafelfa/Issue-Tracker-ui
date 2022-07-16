@@ -47,8 +47,8 @@ if (!process.env.UI_AUTH_ENDPOINT) {
 app.get('/env.js', (req, res) => {
   // let the UI code access this new variable is shown in Listing
   const env = {
-    UI_API_ENDPOINT: 'http://localhost:8000/graphql', // process.env.UI_API_ENDPOINT,
-    UI_AUTH_ENDPOINT: 'http://localhost:8000/auth', // process.env.UI_AUTH_ENDPOINT,
+    UI_API_ENDPOINT: process.env.UI_API_ENDPOINT || 'http://localhost:8000/graphql',
+    UI_AUTH_ENDPOINT: process.env.UI_AUTH_ENDPOINT || 'http://localhost:8000/auth',
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
   };
   // {"UI_API_ENDPOINT":"http://localhost:3000/graphql"}
@@ -59,7 +59,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.resolve('public/index.html'));
 });
 
-const port = process.env.UI_SERVER_PORT || 8000;
+const port = process.env.PORT || 8000;
 
 
 app.listen(port, () => {
